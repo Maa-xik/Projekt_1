@@ -9,7 +9,7 @@
 
 # import ppotrebnych knihoven
 # -----------------------------------------------------------
-import pprint
+#import pprint
 #import time
 
 # promenne
@@ -49,6 +49,19 @@ accounts = {
     "liz":      "pass123"
 }
 
+texts_len = list(range(1, len(TEXTS)+1))    #  pocet bloku textu
+
+
+stat_words =        0       # pocet slov
+stat_first_upp =    0       # pocet slov s prvnim velkym pismenem
+stat_upper =        0       # pocet slov velkymi 
+stat_lower =        0       # pocet slov malymi
+stat_num_cnt =      0       # pocet cisel
+stat_num_sum =      0       # suma vsech cisel       
+
+stat_words_len =   {}       # dict pro pocty slov o delce x
+
+
 # telo programu
 # -----------------------------------------------------------
 
@@ -72,32 +85,51 @@ print("-"*40)
 print("-"*40)
 
 # zadani volby bloku textu
-print("Mas na vyber ze 3 bloku textu (ukazky):\n")
-
-text_pocet = ("1", "2", "3")
-for x in text_pocet:
-    print(x, " - \"",TEXTS[int(x)-1][0:40],"...\"", sep="")
+print("Mas na vyber ze 3 bloku textu (ukazky):")
+for x in texts_len:
+    print("  ", x, " - \"", TEXTS[x-1][0:40], "...\"", sep="")
 print()
-#print("Zadej svoji volbu (pouze cisla 1-3): ", end=""); text_block = input()
-text_block = "1"
+#print("Zadej svoji volbu (pouze cisla 1-3): ", end=""); text_block = int(input())
+text_block = 1
 
-if text_block not in text_pocet:
-    print("Spatna volba")
+if text_block not in texts_len:
+    print("Spatna volba"); 
     print("Ukoncuji program.....")
     exit()
+
 print("-"*40)
 
 # zpracovani bloku textu
-print("Jedeeeeem, pracujem s textem")
 
-text_to_process = TEXTS[int(textblock)-1][:-1].split()  # rozdeleni textu na list a odebrani tecky
+text_to_process = TEXTS[text_block-1].split()  # rozdeleni textu pred zpracovanim na list
+stat_words = len(text_to_process)
+for word in text_to_process:
+    for x in (",","."):
+        word = word.replace(x,"")
+    
+    if not stat_words_len.get(len(word)):
+        stat_words_len[len(word)] = 1
+    else:
+        stat_words_len[len(word)] += 1
 
-print(text_to_process)
-print(len(text_to_process))
+    if word.isnumeric():
+        stat_num_cnt += 1
+        stat_num_sum += int(word)
+    elif word[0].islower():
+        stat_lower += 1
+    elif word[1].isupper():
+        stat_upper += 1
+    else:
+        stat_first_upp += 1
 
-stats_words = len(text_to_process)
-
-
+  
+print(stat_words)
+print(stat_first_upp)
+print(stat_upper)
+print(stat_lower)
+print(stat_num_cnt)
+print(stat_num_sum)
+print(dict(sorted(stat_words_len.items())))
     
 
 
