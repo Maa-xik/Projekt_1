@@ -87,7 +87,7 @@ print("-" * oddelovac)
 # zadani volby bloku textu
 print("Mas na vyber ze 3 bloku textu (ukazky):")
 for x in texts_len:
-    print("  ", x, " - \"", TEXTS[x-1][0:40], "...\"", sep="")
+    print("  ", x, " - \"", TEXTS[x-1][0:36], "...\"", sep="")
 print()
 print("Zadej svoji volbu (pouze cisla 1-3): ", end=""); text_block = int(input())
 #text_block = 1
