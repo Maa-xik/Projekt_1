@@ -1,16 +1,9 @@
 ##################################
 ##          Projekt_1           ##
-##                              ##
-##          Stepan Vysek        ##
+##  do Engeto online akademie   ##
+##          Štěpán Výšek        ##
 ##        vysek@centrum.cz      ##
-##                              ##
 ##################################
-
-
-# import ppotrebnych knihoven
-# -----------------------------------------------------------
-#import pprint
-#import time
 
 # promenne
 # -----------------------------------------------------------
@@ -89,7 +82,6 @@ print("Mas na vyber ze 3 bloku textu (ukazky):")
 for x in texts_len:
     print("  ", x, " - \"", TEXTS[x-1][0:36], "...\"", sep="")
 print()
-
 print("Zadej svoji volbu - pouze cisla", texts_len, ": ", end=""); text_block = input()
 
 if not text_block.isnumeric():
@@ -102,10 +94,8 @@ elif int(text_block) not in texts_len:
     exit()
 else:
     text_block = int(text_block)
-
-
-
 print("-" * oddelovac)
+
 
 # zpracovani bloku textu
 text_to_process = TEXTS[text_block-1].split()  # rozdeleni textu pred zpracovanim na list
@@ -113,7 +103,7 @@ stat_words = len(text_to_process)
 for word in text_to_process:
     for x in (",","."):                     # vycisteni textu od "," a "."
         word = word.replace(x,"")
-    
+
     if not stat_words_len.get(len(word)):   # cetnost delek slov
         stat_words_len[len(word)] = 1
     else:
@@ -128,16 +118,13 @@ for word in text_to_process:
         stat_upper += 1
     else:
         stat_first_upp += 1
-
   
-
 print("{:<38} : {:>6}".format(" Pocet slov v textu ", stat_words))
 print("{:<38} : {:>6}".format(" Pocet slov s prvnim velkym pismenem ", stat_first_upp))
 print("{:<38} : {:>6}".format(" Pocet slov velkymi pismeny ", stat_upper))
 print("{:<38} : {:>6}".format(" Pocet slov malymi pismeny ", stat_lower))
 print("{:<38} : {:>6}".format(" Pocet cisel v textu ", stat_num_cnt))
 print("{:<38} : {:>6}".format(" Suma vsech cisel v textu ", stat_num_sum))
-
 
 # tabulka vyskytu & delky slov
 stat_words_len_sort = dict(sorted(stat_words_len.items()))
@@ -148,12 +135,3 @@ for x in stat_words_len_sort:
     y = stat_words_len_sort[x]
     print("|", "{:>3} | {:<30}".format(x, "*" * y),"|", "{:>4} |".format(y))
 print("-" * oddelovac)
-
-    
-
-
-
-
-
-
-
