@@ -89,13 +89,21 @@ print("Mas na vyber ze 3 bloku textu (ukazky):")
 for x in texts_len:
     print("  ", x, " - \"", TEXTS[x-1][0:36], "...\"", sep="")
 print()
-print("Zadej svoji volbu (pouze cisla 1-3): ", end=""); text_block = int(input())
-#text_block = 1
 
-if text_block not in texts_len:
-    print("Spatna volba"); 
+print("Zadej svoji volbu - pouze cisla", texts_len, ": ", end=""); text_block = input()
+
+if not text_block.isnumeric():
+    print("Spatna volba")
     print("Ukoncuji program.....")
     exit()
+elif int(text_block) not in texts_len:
+    print("Spatna volba")
+    print("Ukoncuji program.....")
+    exit()
+else:
+    text_block = int(text_block)
+
+
 
 print("-" * oddelovac)
 
