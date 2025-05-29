@@ -62,8 +62,8 @@ oddelovac = 47
 
 print("=" * oddelovac, "Vitej v Textovem analyzatoru".center(oddelovac), "=" * oddelovac, sep = "\n")
 print("Zadej sve prihlasovaci udaje:")
-print(" uzivatel: ", end=""); user = input()
-print(" heslo: ", end=""); password = input()
+user = input(" uzivatel: ")
+password = input(" heslo: ")
 print("-" * oddelovac)
 
 if accounts.get(user) == password:
