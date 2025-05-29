@@ -59,7 +59,6 @@ oddelovac = 47
 # -----------------------------------------------------------
 
 # prihlaseni uzivatele
-
 print("=" * oddelovac, "Vitej v Textovem analyzatoru".center(oddelovac), "=" * oddelovac, sep = "\n")
 print("Zadej sve prihlasovaci udaje:")
 user = input(" uzivatel: ")
@@ -86,12 +85,10 @@ print()
 print(" Zadej svoji volbu - pouze cisla", texts_len, ": ", end=""); text_block = input()
 
 if not text_block.isnumeric():
-    print("Spatna volba")
-    print("Ukoncuji program.....")
+    print("Spatna volba, nutne cislo", "Ukoncuji program.....", sep="\n")
     exit()
 elif int(text_block) not in texts_len:
-    print("Spatna volba")
-    print("Ukoncuji program.....")
+    print("Spatna volba, neni ve vyberu", "Ukoncuji program.....", sep="\n")
     exit()
 else:
     text_block = int(text_block)
